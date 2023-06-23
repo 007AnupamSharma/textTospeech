@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+    <style>
+        *{
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        body{
+            background-color: rgba(5, 9, 26, 0.967);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        textarea{
+            border: none;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: normal;
+            outline: none;
+            background-color: rgba(5, 9, 26, 0.967);
+            padding: 1rem;
+            color: white;
+            border-radius: 10px;
+            text-decoration-line: none;
+            /* background-color: transparent; */
+            resize: none;
+
+
+        }
+
+        textarea:focus{
+            outline: 2px solid white;
+        }
+        button{
+            border: none;
+            border-radius: 5px;
+            padding: 5px 14px;
+            background-color: rgb(46, 157, 46);
+            color: white;
+            font-size: 20px;
+            margin-top: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <textarea></textarea>
+    <button>Speak</button>
+</body>
+
+<script>
+    let button = document.querySelector('button')
+    let text = document.querySelector('textarea')
+    text.placeholder = "Enter the text...";
+    button.addEventListener("click", (e)=>{
+        let Speech = new SpeechSynthesisUtterance(text.value);
+        speechSynthesis.speak(Speech);
+        text.value="";
+    })
+</script>
+</html>
